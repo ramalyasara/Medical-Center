@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="med_pres_subreport2" pageWidth="555" pageHeight="802" columnWidth="535" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="30b725ab-bdef-42d1-b357-18927d03446e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     medical_prescription.`tId` AS medical_prescription_tId,
+     medical_prescription.`mNo` AS medical_prescription_mNo,
+     medical_prescription.`pId` AS medical_prescription_pId,
+     medical_prescription.`sId` AS medical_prescription_sId,
+     medical_prescription.`tQuantity` AS medical_prescription_tQuantity,
+     medical_prescription.`tds` AS medical_prescription_tds,
+     medicine.`mNo` AS medicine_mNo,
+     medicine.`mCat` AS medicine_mCat,
+     medicine.`mName` AS medicine_mName
+FROM
+     `medicine` medicine INNER JOIN `medical_prescription` medical_prescription ON medicine.`mNo` = medical_prescription.`mNo`]]>
+	</queryString>
+	<field name="medical_prescription_tId" class="java.lang.Integer"/>
+	<field name="medical_prescription_mNo" class="java.lang.Integer"/>
+	<field name="medical_prescription_pId" class="java.lang.String"/>
+	<field name="medical_prescription_sId" class="java.lang.Integer"/>
+	<field name="medical_prescription_tQuantity" class="java.lang.Integer"/>
+	<field name="medical_prescription_tds" class="java.lang.Integer"/>
+	<field name="medicine_mNo" class="java.lang.Integer"/>
+	<field name="medicine_mCat" class="java.lang.String"/>
+	<field name="medicine_mName" class="java.lang.String"/>
+	<group name="medical_prescription_tId">
+		<groupExpression><![CDATA[$F{medical_prescription_tId}]]></groupExpression>
+		<groupHeader>
+			<band height="40">
+				<textField>
+					<reportElement style="SubTitle" x="47" y="13" width="506" height="24" forecolor="#333333" uuid="b1111794-80fa-4227-9b93-c24a2cb799e8"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{medical_prescription_tId}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement mode="Opaque" x="0" y="13" width="36" height="24" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="d1594a48-1128-483b-b58c-552e197c3357"/>
+				</rectangle>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="0" y="5" width="263" height="33" uuid="ae65a9ed-7781-46c6-a6fe-cafafa751b57"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Wood Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="63" y="39" width="200" height="22" forecolor="#FFFFFF" uuid="d3ead644-29e8-4bd0-966a-bf695faec0d9"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Wood SubTitle]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="c10cecfc-3a76-4347-9972-efcb64263923"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="69" height="15" uuid="0d472410-6c23-469c-b8c1-c496c16fa857"/>
+				<text><![CDATA[medical_prescription_mNo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="69" y="19" width="69" height="15" uuid="58d71e1a-4a97-4c17-8b7a-d585459e86d1"/>
+				<text><![CDATA[medical_prescription_pId]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="138" y="19" width="69" height="15" uuid="eb18f5b6-4db3-4c7b-910d-882234352b04"/>
+				<text><![CDATA[medical_prescription_sId]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="207" y="19" width="69" height="15" uuid="bf7ccc51-9f77-4662-83d9-74e444f8bdfb"/>
+				<text><![CDATA[medical_prescription_tQuantity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="276" y="19" width="69" height="15" uuid="e4a8d3b1-1478-4a18-bf05-24464b0fc037"/>
+				<text><![CDATA[medical_prescription_tds]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="345" y="19" width="69" height="15" uuid="c33fd3c3-c04b-4cf3-b0b3-ccfca9d00e0b"/>
+				<text><![CDATA[medicine_mNo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="414" y="19" width="69" height="15" uuid="c0aec2e1-99c0-4467-b098-e2acdc63b5eb"/>
+				<text><![CDATA[medicine_mCat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="483" y="19" width="69" height="15" uuid="5c7109d8-62a6-4554-baa6-d3aedd337fd2"/>
+				<text><![CDATA[medicine_mName]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="6fa36246-9117-42a5-856a-d1ebe38ae842"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="69" height="15" uuid="d9f93e59-fffd-4835-8ed1-c3d78fa37192"/>
+				<textFieldExpression><![CDATA[$F{medical_prescription_mNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="69" y="0" width="69" height="15" uuid="873fdba3-c1e7-4605-8f9c-eb146cf268f2"/>
+				<textFieldExpression><![CDATA[$F{medical_prescription_pId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="138" y="0" width="69" height="15" uuid="cb5b95dd-83b4-4958-b213-5f27f5d9aabd"/>
+				<textFieldExpression><![CDATA[$F{medical_prescription_sId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="207" y="0" width="69" height="15" uuid="206f559a-0fb1-41df-b03f-530db8eeeea5"/>
+				<textFieldExpression><![CDATA[$F{medical_prescription_tQuantity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="276" y="0" width="69" height="15" uuid="11b948be-a28b-4bda-bb38-2fadeca39a6c"/>
+				<textFieldExpression><![CDATA[$F{medical_prescription_tds}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="345" y="0" width="69" height="15" uuid="7ad0bf4a-323f-4b7e-8bd3-42d86b575a8d"/>
+				<textFieldExpression><![CDATA[$F{medicine_mNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="414" y="0" width="69" height="15" uuid="32f8167a-8506-4fc2-b3ef-ec9adeeaa791"/>
+				<textFieldExpression><![CDATA[$F{medicine_mCat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="483" y="0" width="69" height="15" uuid="acbe4f6b-abc7-45c4-bdf1-45c3477bfec2"/>
+				<textFieldExpression><![CDATA[$F{medicine_mName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="669e7837-7cb1-4ffd-90af-48f5988d3ed1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="9f0fc888-f582-434a-b642-28309908b42d"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="8652f2e0-8edf-485b-aca8-50990dc34645"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="49174970-fe96-46a5-b41e-7bfdb80ef09e"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

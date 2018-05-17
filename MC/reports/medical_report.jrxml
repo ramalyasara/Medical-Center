@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="medical_report" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f674f2a4-de03-4a59-8798-0bae677f4834">
+	<property name="ireport.zoom" value="1.2100000000000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     medical_isuue.`MID` AS medical_isuue_MID,
+     medical_isuue.`tId` AS medical_isuue_tId,
+     medical_isuue.`pId` AS medical_isuue_pId,
+     medical_isuue.`toDate` AS medical_isuue_toDate,
+     medical_isuue.`fromDate` AS medical_isuue_fromDate,
+     treatment.`tId` AS treatment_tId,
+     treatment.`pId` AS treatment_pId,
+     treatment.`illness` AS treatment_illness,
+     treatment.`tDate` AS treatment_tDate,
+     treatment.`otherm` AS treatment_otherm,
+     patien_deatails.`pId` AS patien_deatails_pId,
+     patien_deatails.`pName` AS patien_deatails_pName,
+     patien_deatails.`pCat` AS patien_deatails_pCat,
+     FLOOR(DATEDIFF(curdate(), patien_deatails.`bDate`)/365) as age,
+     DATEDIFF( medical_isuue.`toDate`, medical_isuue.`fromDate`) as diffday,
+     patien_deatails.`bDate` AS patien_deatails_bDate,
+     patien_deatails.`gender` AS patien_deatails_gender,
+     patien_deatails.`address` AS patien_deatails_address,
+     patien_deatails.`contactNo` AS patien_deatails_contactNo,
+     patien_deatails.`allegies` AS patien_deatails_allegies
+FROM
+     `treatment` treatment INNER JOIN `medical_isuue` medical_isuue ON treatment.`tId` = medical_isuue.`tId`
+     INNER JOIN `patien_deatails` patien_deatails ON medical_isuue.`pId` = patien_deatails.`pId`
+     AND patien_deatails.`pId` = treatment.`pId`]]>
+	</queryString>
+	<field name="medical_isuue_MID" class="java.lang.Integer"/>
+	<field name="patien_deatails_pName" class="java.lang.String"/>
+	<field name="patien_deatails_pId" class="java.lang.String"/>
+	<field name="age" class="java.lang.Long"/>
+	<field name="treatment_illness" class="java.lang.String"/>
+	<field name="diffday" class="java.lang.Long"/>
+	<field name="medical_isuue_fromDate" class="java.sql.Date"/>
+	<field name="medical_isuue_toDate" class="java.sql.Date"/>
+	<group name="medical_isuue_MID">
+		<groupExpression><![CDATA[$F{medical_isuue_MID}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="110" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="36" splitType="Stretch">
+			<staticText>
+				<reportElement x="176" y="0" width="207" height="20" uuid="a3e9b1c6-9d2a-42f8-a61e-cd3b2b1b409b"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MEDICAL CERTIFICATE]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="34" splitType="Stretch">
+			<staticText>
+				<reportElement x="99" y="0" width="383" height="20" uuid="836bd378-9d05-4951-baf5-6d2b32f2d61f"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSITY HEALTH CENTRE - UVA WELLASSA UNIVERSITY]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="279" splitType="Stretch">
+			<staticText>
+				<reportElement x="12" y="37" width="526" height="17" uuid="19392de1-23d2-445c-831f-1b22aaf883b4"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Medical ID                            : .......................................................................................................................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="77" width="526" height="15" uuid="9b405600-57ef-4f28-a864-147be2aa3197"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name of the Student          : .......................................................................................................................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="145" width="528" height="13" uuid="a7d1fa98-2d91-45f2-bd3d-7367d33067b3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Age                                          : .........................................................................................................................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="189" width="528" height="16" uuid="ccf20ef5-0b4c-4c68-a8f1-c39a13d41bb5"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[illness                                      : .........................................................................................................................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="231" width="526" height="16" uuid="abd39d59-2af2-4ad6-8c8b-6610d1ff6b46"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[I recommend.................days leave from........................................................to.............................................................]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="176" y="34" width="139" height="20" uuid="c1f6517f-5dfe-4e1a-8e8d-404e487ba398"/>
+				<textFieldExpression><![CDATA[$F{medical_isuue_MID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="165" y="72" width="317" height="20" uuid="8dd4fd40-77a2-49e0-9816-16f2bdae93f1"/>
+				<textFieldExpression><![CDATA[$F{patien_deatails_pName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="184" y="105" width="279" height="20" uuid="a8f994d3-0d91-46f5-8935-dbe2c02dd50c"/>
+				<textFieldExpression><![CDATA[$F{patien_deatails_pId}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="12" y="105" width="526" height="20" uuid="1a9b5cb0-efc9-41ae-ae8a-b7ffe46ee77f"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reg No                                   :.........................................................................................................................................]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="184" y="138" width="100" height="20" uuid="1aa2fdd0-6a01-46a1-b0f4-ee2fe3e8c51c"/>
+				<textFieldExpression><![CDATA[$F{age}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="184" y="185" width="100" height="20" uuid="3c2e2542-e71d-4183-a11e-c87f79d5a5b1"/>
+				<textFieldExpression><![CDATA[$F{treatment_illness}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="84" y="227" width="100" height="20" uuid="952d7ca7-806d-4ecb-9f85-f730a5f7342a"/>
+				<textFieldExpression><![CDATA[$F{diffday}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="212" y="227" width="145" height="20" uuid="f8c80656-227c-44a8-be1f-198bef1787d8"/>
+				<textFieldExpression><![CDATA[$F{medical_isuue_fromDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="227" width="137" height="20" uuid="40e8a831-cd12-4260-a000-8f45e9ec284f"/>
+				<textFieldExpression><![CDATA[$F{medical_isuue_toDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="44" splitType="Stretch">
+			<staticText>
+				<reportElement x="325" y="12" width="58" height="20" uuid="72ac0b21-5728-4e4f-9efe-ea946a837197"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<textField pattern="MM/dd/yyyy">
+				<reportElement x="383" y="12" width="137" height="20" uuid="66839056-7b7f-4186-9a27-19cf68b6060e"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="3" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="332" y="22" width="223" height="20" uuid="c1a99e1b-6379-4bd7-9f9d-75148ea2804f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Signature of the University Medical Officer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="332" y="2" width="223" height="20" uuid="a0857c40-79f3-489a-be30-261409d69439"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[......................................................................................]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

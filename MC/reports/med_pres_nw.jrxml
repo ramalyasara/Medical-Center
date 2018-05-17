@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="med_pres" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5fcf9c6e-10e3-49ff-8401-c8b7eaf60865">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="9ecaadad-2b76-47e2-b7b9-3dacfdac2723"/>
+	<subDataset name="dataset1" uuid="8f246849-56b8-48dc-ac13-0049c09e6d8e"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Dineth\\Desktop\\iReports\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     medical_prescription.`tId` AS medical_prescription_tId,
+     medical_prescription.`mNo` AS medical_prescription_mNo,
+     medical_prescription.`pId` AS medical_prescription_pId,
+     medical_prescription.`sId` AS medical_prescription_sId,
+     medical_prescription.`tQuantity` AS medical_prescription_tQuantity,
+     medical_prescription.`tds` AS medical_prescription_tds,
+     patien_deatails.`pId` AS patien_deatails_pId,
+     patien_deatails.`pName` AS patien_deatails_pName,
+     patien_deatails.`pCat` AS patien_deatails_pCat,
+     patien_deatails.`bDate` AS patien_deatails_bDate,
+     patien_deatails.`gender` AS patien_deatails_gender,
+     patien_deatails.`address` AS patien_deatails_address,
+     patien_deatails.`contactNo` AS patien_deatails_contactNo,
+     patien_deatails.`allegies` AS patien_deatails_allegies,
+     patien_deatails.`bloodType` AS patien_deatails_bloodType,
+     treatment.`tId` AS treatment_tId,
+     treatment.`pId` AS treatment_pId,
+     treatment.`illness` AS treatment_illness,
+     treatment.`tDate` AS treatment_tDate,
+     treatment.`otherm` AS treatment_otherm,
+     medicine.`mNo` AS medicine_mNo,
+     medicine.`mCat` AS medicine_mCat,
+     medicine.`mName` AS medicine_mName
+FROM
+     `patien_deatails` patien_deatails INNER JOIN `medical_prescription` medical_prescription ON patien_deatails.`pId` = medical_prescription.`pId`
+     INNER JOIN `treatment` treatment ON patien_deatails.`pId` = treatment.`pId`
+     AND treatment.`tId` = medical_prescription.`tId`
+     INNER JOIN `medicine` medicine ON medical_prescription.`mNo` = medicine.`mNo`]]>
+	</queryString>
+	<field name="medical_prescription_tId" class="java.lang.Integer"/>
+	<field name="medical_prescription_mNo" class="java.lang.Integer"/>
+	<field name="medical_prescription_pId" class="java.lang.String"/>
+	<field name="medical_prescription_sId" class="java.lang.Integer"/>
+	<field name="medical_prescription_tQuantity" class="java.lang.Integer"/>
+	<field name="medical_prescription_tds" class="java.lang.Integer"/>
+	<field name="patien_deatails_pId" class="java.lang.String"/>
+	<field name="patien_deatails_pName" class="java.lang.String"/>
+	<field name="patien_deatails_pCat" class="java.lang.String"/>
+	<field name="patien_deatails_bDate" class="java.sql.Date"/>
+	<field name="patien_deatails_gender" class="java.lang.String"/>
+	<field name="patien_deatails_address" class="java.lang.String"/>
+	<field name="patien_deatails_contactNo" class="java.lang.String"/>
+	<field name="patien_deatails_allegies" class="java.lang.String"/>
+	<field name="patien_deatails_bloodType" class="java.lang.String"/>
+	<field name="treatment_tId" class="java.lang.Integer"/>
+	<field name="treatment_pId" class="java.lang.String"/>
+	<field name="treatment_illness" class="java.lang.String"/>
+	<field name="treatment_tDate" class="java.sql.Date"/>
+	<field name="treatment_otherm" class="java.lang.Boolean"/>
+	<field name="medicine_mNo" class="java.lang.Integer"/>
+	<field name="medicine_mCat" class="java.lang.String"/>
+	<field name="medicine_mName" class="java.lang.String"/>
+	<group name="patien_deatails_pName">
+		<groupExpression><![CDATA[$F{patien_deatails_pName}]]></groupExpression>
+		<groupHeader>
+			<band height="426">
+				<rectangle>
+					<reportElement x="0" y="346" width="555" height="20" uuid="4473409c-9f00-4748-8bd9-1dcbd5785e09"/>
+				</rectangle>
+				<rectangle>
+					<reportElement x="0" y="149" width="555" height="176" uuid="ef1a99b0-ca62-4efd-9c69-51e17ead7c9b"/>
+				</rectangle>
+				<rectangle>
+					<reportElement x="0" y="81" width="555" height="68" uuid="0c7e21c9-8c37-4fa9-ab9f-4f6800d1b54d"/>
+				</rectangle>
+				<rectangle>
+					<reportElement x="1" y="0" width="354" height="81" uuid="6dac86e1-62a1-4782-9211-7be4a8902eb0"/>
+				</rectangle>
+				<staticText>
+					<reportElement style="Column header" x="0" y="25" width="136" height="15" uuid="7e1de4f8-1c20-4f6b-836d-678d3920cc6a"/>
+					<text><![CDATA[Catogory]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="Detail" x="171" y="25" width="184" height="15" uuid="c1b83b1c-4480-44a8-aca2-2171e0d6a0d6"/>
+					<textElement>
+						<font isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{patien_deatails_pCat}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="171" y="10" width="184" height="15" uuid="9346d969-000a-4724-8ab4-9b56db75267b"/>
+					<textFieldExpression><![CDATA[$F{patien_deatails_gender}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="Column header" x="0" y="10" width="136" height="15" uuid="9cdd9670-9152-45db-a76c-efb746e9668e"/>
+					<text><![CDATA[Gender]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="0" y="40" width="136" height="15" uuid="ff5492cd-5cd9-4030-bb15-d2c2fbf6040c"/>
+					<text><![CDATA[Patient ID]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="Detail" x="171" y="40" width="184" height="15" uuid="2dc6dcef-0ae9-4143-8488-08bf3a838a34"/>
+					<textFieldExpression><![CDATA[$F{patien_deatails_pId}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="Column header" x="0" y="55" width="136" height="15" uuid="4df8d763-7a7a-4283-a1b4-f87b8db57ff6"/>
+					<text><![CDATA[Age]]></text>
+				</staticText>
+				<textField pattern="dd/MM/yyyy">
+					<reportElement style="Detail" x="171" y="55" width="184" height="15" uuid="25b9276a-55c0-4a33-9c46-edcfd352e40d"/>
+					<textFieldExpression><![CDATA[$F{patien_deatails_bDate}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="Column header" x="0" y="103" width="136" height="15" uuid="04da1532-48ae-4b5a-9b33-fc880a909979"/>
+					<text><![CDATA[tId]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="Detail" x="171" y="103" width="184" height="15" uuid="39aecf6a-0362-4553-8809-b6ac7c79d4e1"/>
+					<textFieldExpression><![CDATA[$F{treatment_tId}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="Column header" x="1" y="118" width="135" height="15" uuid="d628c095-7ae4-4d01-9ece-b1d86c553f8e"/>
+					<text><![CDATA[Illness]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="Detail" x="171" y="118" width="184" height="15" uuid="efc41c00-0d0f-4cb9-9e9c-b1f5c1b6c858"/>
+					<textFieldExpression><![CDATA[$F{treatment_illness}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="Column header" x="0" y="134" width="136" height="15" uuid="e0db01dc-730c-443e-a562-23e87f89db74"/>
+					<text><![CDATA[Treatment date]]></text>
+				</staticText>
+				<textField pattern="dd/MM/yyyy">
+					<reportElement style="Detail" x="171" y="134" width="184" height="15" uuid="4f96f59b-2579-47ba-aa34-cc1abeba0cc9"/>
+					<textFieldExpression><![CDATA[$F{treatment_tDate}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="80" width="151" height="20" uuid="61a97d55-2c5d-412c-a426-0899df615fa1"/>
+					<textElement>
+						<font fontName="Times New Roman" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Complaint and Symptoms]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="149" width="100" height="20" uuid="0fa117d0-a104-4381-afe6-6b09e8ed1877"/>
+					<textElement>
+						<font fontName="Times New Roman" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Treatment]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement x="0" y="366" width="555" height="20" uuid="4e85913c-8102-4d74-8a94-8c2b406cbf33"/>
+				</rectangle>
+				<rectangle>
+					<reportElement x="0" y="386" width="555" height="20" uuid="1664b1bf-fb71-4e91-ba6b-f5cab739dc4c"/>
+				</rectangle>
+				<rectangle>
+					<reportElement x="0" y="406" width="555" height="20" uuid="fcea6719-0c01-4238-a5a5-787c9e8e6dec"/>
+				</rectangle>
+				<staticText>
+					<reportElement x="0" y="346" width="100" height="20" uuid="dc0bf18d-97dd-4177-9c3d-5767f3e4936f"/>
+					<text><![CDATA[Medical Officer]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="366" width="100" height="20" uuid="42bd2dc2-4e98-407b-9cde-abfa650eab80"/>
+					<text><![CDATA[SLMC Registration]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="386" width="100" height="20" uuid="2c48b81b-bf10-438d-a3a0-f2c89a903be2"/>
+					<text><![CDATA[Address]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="406" width="100" height="20" uuid="90053f0b-3aee-49bf-b154-58e841d5d214"/>
+					<text><![CDATA[Signature]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="71" y="189" width="100" height="20" uuid="90324d5c-9b60-4572-b788-385a3d9bb60b"/>
+					<textFieldExpression><![CDATA[$F{medicine_mName}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="171" y="189" width="100" height="20" uuid="0dca2114-b234-400f-a5eb-caf8eada3401"/>
+					<textFieldExpression><![CDATA[$F{medical_prescription_A_tQuantity}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="271" y="189" width="100" height="20" uuid="17dfe614-1847-492f-8142-56108a2d7d81"/>
+					<textFieldExpression><![CDATA[$F{medical_prescription_A_tds}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="99" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="0" width="228" height="36" uuid="1ccadbef-ecf4-4853-86c1-9f7b032cbc26"/>
+				<textElement>
+					<font fontName="Times New Roman" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HELTH CENTER]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="51" y="36" width="100" height="20" uuid="e5732e6a-c945-4164-9fbe-6968a00a9326"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="36" width="50" height="20" uuid="04179df8-ee5a-4c8d-b529-42e7267f5994"/>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="79" width="196" height="20" uuid="4a7d9fcc-c1d3-45f8-931b-ad07b73873d1"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MEDICAL PRESCRIPTION]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="354" height="20" uuid="8dae60ef-871e-449e-9bb6-198f03c2c1ad"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="1" y="0" width="100" height="20" uuid="e4e69218-c4be-4ae1-9d37-e6630aec0dbb"/>
+				<text><![CDATA[Patient's Name]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="171" y="0" width="184" height="20" uuid="da4e42dc-24ac-4af5-9bd3-29b36f3c79a0"/>
+				<textFieldExpression><![CDATA[$F{patien_deatails_pName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

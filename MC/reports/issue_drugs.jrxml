@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="issue_drugs" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2bd330b5-e4a3-4d61-be32-cc1e10b7a281">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString>
+		<![CDATA[SELECT
+     medicine_issue.`mNo` AS medicine_issue_mNo,
+     medicine_issue.`sId` AS medicine_issue_sId,
+     medicine_issue.`mName` AS medicine_issue_mName,
+     medicine_issue.`description` AS medicine_issue_description,
+     medicine_issue.`iQuantity` AS medicine_issue_iQuantity,
+     medicine_issue.`iDate` AS medicine_issue_iDate
+FROM
+     `medicine_issue` medicine_issue where medicine_issue.`iDate`>='2016-02-24' AND   medicine_issue.`iDate`<='2016-02-28'  order by medicine_issue.`mNo`]]>
+	</queryString>
+	<field name="medicine_issue_mNo" class="java.lang.Integer"/>
+	<field name="medicine_issue_sId" class="java.lang.Integer"/>
+	<field name="medicine_issue_mName" class="java.lang.String"/>
+	<field name="medicine_issue_description" class="java.lang.String"/>
+	<field name="medicine_issue_iQuantity" class="java.lang.Integer"/>
+	<field name="medicine_issue_iDate" class="java.sql.Date"/>
+	<group name="medicine_issue_mNo">
+		<groupExpression><![CDATA[$F{medicine_issue_mNo}]]></groupExpression>
+		<groupHeader>
+			<band height="42">
+				<textField>
+					<reportElement style="SubTitle" x="0" y="13" width="225" height="24" forecolor="#000000" uuid="93d4d7ad-2b95-4426-9b2a-c3766eee04bd"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{medicine_issue_mNo}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="SubTitle" x="115" y="13" width="235" height="20" uuid="f7a2f1c9-574c-4dd6-8142-b0b8bb31ae1a"/>
+					<textElement>
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{medicine_issue_mName}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<group name="medicine_issue_mName">
+		<groupExpression><![CDATA[$F{medicine_issue_mName}]]></groupExpression>
+		<groupHeader>
+			<band height="11"/>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="0" y="0" width="335" height="33" uuid="6be61bde-a619-4df1-ba2b-cfc5312f2627"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[UWU MEDICAL CENTER]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="210" y="48" width="157" height="22" uuid="6cd85741-3fd6-4eaf-abf2-253ceb5c10d5"/>
+				<text><![CDATA[Issue Drugs]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="e8123745-d656-47a8-8207-bc20caef7aa0"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="138" height="15" uuid="92b631c0-1a99-4fca-aefc-f5164284dde0"/>
+				<text><![CDATA[Stock Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="138" y="19" width="138" height="15" uuid="5e4943d3-f64c-42fd-ac89-913f57b976f7"/>
+				<text><![CDATA[Descriptin]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="276" y="19" width="138" height="15" uuid="cd7e3ec0-5d4e-4990-a027-135335240e7a"/>
+				<text><![CDATA[Issued date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="414" y="19" width="138" height="15" uuid="4d275c9f-b1ba-4da0-840f-51fd9795b746"/>
+				<text><![CDATA[Quantitiy]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="63e39128-3547-416a-a824-716b3f2de906"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="138" height="15" uuid="0be192a9-7ed3-44e0-9e57-7c2f1a67dcde"/>
+				<textFieldExpression><![CDATA[$F{medicine_issue_sId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="138" y="0" width="138" height="15" uuid="4d0021d6-d78a-4814-84dd-ceb198dea735"/>
+				<textFieldExpression><![CDATA[$F{medicine_issue_description}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement style="Detail" x="276" y="0" width="138" height="15" uuid="e39fc052-e216-4918-bb0e-3111a2416ff7"/>
+				<textFieldExpression><![CDATA[$F{medicine_issue_iDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="414" y="0" width="138" height="15" uuid="535fc1d8-3aff-49b9-8934-7ae8f80cf7d6"/>
+				<textFieldExpression><![CDATA[$F{medicine_issue_iQuantity}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="4242af17-a61a-49a1-b2e9-3296e1fbd528"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="90b190e5-057a-4bcb-ab26-18927abb92aa"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="a322b113-ed56-468a-8230-de949d0b01c2"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="828e0240-1fd0-459b-8f1c-8c14f6f80915"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
